@@ -1,1 +1,37 @@
-<p>account works!</p>
+<div class="w-100 h-100">
+    <mat-card class="container-header">
+        <div class="row m-0 p-0 h-100">
+            <div class="col-sm-6" style="text-align: left;">
+                <h1 style="color: var(--blue); margin: 0px;">Contas</h1>
+            </div>
+            <div class="col-sm-6 text-center">
+                <button (click)="createAccount()" mat-raised-button color="primary">
+                    <mat-icon>add</mat-icon>
+                    Criar Nova Conta
+                </button>
+            </div>
+        </div>
+    </mat-card>
+    <br>
+    <mat-card class="container-content">
+        <div class="w-100" *ngIf="isLoaded && hasContent">
+            <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="number">
+                    <th mat-header-cell *matHeaderCellDef> Número da Conta </th>
+                    <td mat-cell *matCellDef="let element"> {{element.number}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page">
+            </mat-paginator>
+        </div>
+        <div *ngIf="!hasContent" class="text-center">
+            <i>
+                <h4>Não há Contas cadastradas!</h4>
+            </i>
+        </div>
+    </mat-card>
+</div>

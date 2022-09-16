@@ -1,0 +1,31 @@
+<div class="text-center">
+    <span *ngIf="type == 'loading'">
+        <mat-spinner></mat-spinner>
+        <h6>Carregando...</h6>
+    </span>
+
+    <span *ngIf="type == 'error'">
+        <mat-icon style="color: red;  font-size: 36px;">clear</mat-icon>
+        <h6>{{error}}</h6>
+        <button mat-raised-button color="warn" (click)="close(0)">Fechar</button>
+
+    </span>
+
+    <span *ngIf="type == 'success'">
+        <mat-icon style="color: green; font-size: 36px;">check_circle</mat-icon>
+        <h6>Feito com Sucesso!</h6>
+        <button mat-raised-button color="warn" (click)="close(0)">Fechar</button>
+    </span>
+
+    <span *ngIf="type == 'delete'">
+        <h6>Deseja apagar '{{title}}' ?</h6>
+        <button class="m-2" mat-raised-button color="warn" (click)="close(0)">Não</button>
+        <button mat-raised-button color="primary" (click)="close(1)">Sim</button>
+    </span>
+
+    <span *ngIf="type == 'cancel'">
+        <h6>Deseja CANCELAR Venda N° '{{title}}' ?</h6>
+        <button class="m-2" mat-raised-button color="warn" (click)="close(0)">Não</button>
+        <button mat-raised-button color="primary" (click)="close(1)">Sim</button>
+    </span>
+</div>

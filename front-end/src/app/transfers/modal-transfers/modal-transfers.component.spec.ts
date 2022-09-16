@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AccountComponent } from './account.component';
+import { ModalTransfersComponent } from './modal-transfers.component';
 
-describe('AccountComponent', () => {
-  let component: AccountComponent;
-  let fixture: ComponentFixture<AccountComponent>;
+describe('ModalTransfersComponent', () => {
+  let component: ModalTransfersComponent;
+  let fixture: ComponentFixture<ModalTransfersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AccountComponent ]
+      declarations: [ ModalTransfersComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AccountComponent);
+    fixture = TestBed.createComponent(ModalTransfersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

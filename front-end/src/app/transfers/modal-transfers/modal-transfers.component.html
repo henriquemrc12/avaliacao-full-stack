@@ -1,0 +1,41 @@
+<div>
+    <h4> Agendar transferência</h4>
+    <hr>
+        <form [formGroup]="form">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Conta de Origem</mat-label>
+                <input matInput formControlName="origin" type="number" placeholder="Ex.: 023521.0">
+                <mat-error>A conta de Origem é obrigatório!</mat-error>
+            </mat-form-field>
+            <div class="text-center">
+                <mat-icon>keyboard_double_arrow_down</mat-icon>
+            </div>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Conta de Destino</mat-label>
+                <input matInput formControlName="destination" type="number" placeholder="Ex.: 023521.0">
+                <mat-error>A conta de Destino é obrigatório!</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-50">
+                <mat-label>Valor</mat-label>
+                <input matInput formControlName="amount" type="number">
+                <mat-error>O valor é obrigatório!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-50">
+                <mat-label>Data de Efetivação</mat-label>
+                <input matInput formControlName="scheduleDate" type="date" [min]="minDate">
+                <mat-error>A data de Efetivação é obrigatório!</mat-error>
+            </mat-form-field>
+        </form>
+        
+    <hr>
+    <div class="text-center">
+        <button class="m-2" (click)="close()" mat-raised-button  color="warn">
+            SAIR
+        </button>
+
+        <button (click)="submit()" mat-raised-button  color="primary" [disabled]="form.invalid">
+            AGENDAR
+        </button>
+    </div>
+</div>

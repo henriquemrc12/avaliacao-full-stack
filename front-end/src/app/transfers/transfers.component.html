@@ -1,1 +1,67 @@
-<p>transfers works!</p>
+<div class="w-100 h-100">
+    <mat-card class="container-header">
+        <div class="row m-0 p-0 h-100">
+            <div class="col-sm-6" style="text-align: left;">
+                <h1 style="color: var(--blue); margin: 0px;">Transferências</h1>
+            </div>
+            <div class="col-sm-6 text-center">
+                <button (click)="createTransfer()" mat-raised-button color="primary">
+                    <mat-icon>add</mat-icon>
+                    Criar Nova Transferência
+                </button>
+            </div>
+        </div>
+    </mat-card>
+    <br>
+    <mat-card class="container-content">
+        <div class="w-100" *ngIf="isLoaded && hasContent">
+            <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="origin">
+                    <th mat-header-cell *matHeaderCellDef> Conta de origem </th>
+                    <td mat-cell *matCellDef="let element"> {{element.origin.number}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="destination">
+                    <th mat-header-cell *matHeaderCellDef> Conta de destino </th>
+                    <td mat-cell *matCellDef="let element"> {{element.destination.number}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef> Valor </th>
+                    <td mat-cell *matCellDef="let element"> R$ {{element.amount}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="amountFee">
+                    <th mat-header-cell *matHeaderCellDef> Taxa de Transferência </th>
+                    <td mat-cell *matCellDef="let element"> R$ {{element.amountFee}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.status === "DONE" ? "Efetivada" : "Aguardando efetivação"}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="transferEffectiveDate">
+                    <th mat-header-cell *matHeaderCellDef> Data de efetivação da Transferência </th>
+                    <td mat-cell *matCellDef="let element"> {{element.transferEffectiveDate}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="scheduleDate">
+                    <th mat-header-cell *matHeaderCellDef> Data do Agendamento </th>
+                    <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page">
+            </mat-paginator>
+        </div>
+        <div *ngIf="!hasContent" class="text-center">
+            <i>
+                <h4>Não há Transferências cadastradas!</h4>
+            </i>
+        </div>
+    </mat-card>
+</div>
